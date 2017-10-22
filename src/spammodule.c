@@ -12,12 +12,14 @@ spam_system(PyObject *self, PyObject *args)
 
     if (!PyArg_ParseTuple(args, "s", &command))
         return NULL;
-    sts = system(command);
-    if (sts < 0) {
-        PyErr_SetString(SpamError, "System command failed");
-        return NULL;
-    }
-    return PyLong_FromLong(sts);
+    // sts = system(command);
+    // if (sts < 0) {
+    //     PyErr_SetString(SpamError, "System command failed");
+    //     return NULL;
+    // }
+    // return PyLong_FromLong(sts);
+    printf("Hello %s!\n", name);
+    return Py_RETURN_NONE
 }
 
 
