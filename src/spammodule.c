@@ -2,7 +2,7 @@
 
 
 static PyObject *SpamError;
-
+static const char spam_doc[] = "just a hello world...";
 
 static PyObject *
 spam_system(PyObject *self, PyObject *args)
@@ -18,15 +18,27 @@ spam_system(PyObject *self, PyObject *args)
     //     return NULL;
     // }
     // return PyLong_FromLong(sts);
-    printf("Hello %s!\n", name);
-    return Py_RETURN_NONE
+    printf("Hello %s!\n", command);
+    Py_RETURN_NONE;
 }
 
 
+/* Methods */
 static PyMethodDef SpamMethods[] = {
     {"system",  spam_system, METH_VARARGS,
      "Execute a shell command."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
+};
+
+
+/* Module */
+static struct PyModuleDef spammodule = {
+    PyModuleDef_HEAD_INIT,
+    "spam",   /* name of module */
+    spam_doc, /* module documentation, may be NULL */
+    -1,       /* size of per-interpreter state of the module,
+                 or -1 if the module keeps state in global variables. */
+    SpamMethods
 };
 
 
